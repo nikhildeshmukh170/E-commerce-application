@@ -15,97 +15,132 @@ export default function Navbar({ cartCount = 0, setSearchTerm }) {
 
   const handleChange = (value) => {
     setSearch(value);
-    setSearchTerm(value); // 🔥 THIS IS THE KEY
+    setSearchTerm(value);
   };
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300
-        ${
-          scrolled
-            ? "bg-slate-900/80 backdrop-blur border-b border-slate-800"
-            : "bg-slate-900"
-        }`}
+      data-scrolled={scrolled}
+      className="brand-header sticky top-0 z-50 transition-all duration-300"
     >
       <div className="max-w-7xl mx-auto px-4">
         <div className="h-16 flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="text-white font-semibold text-xl tracking-wide">
-            Cartify<span className="text-slate-400">.</span>
+          <Link
+            to="/"
+            className="flex items-center gap-2 font-semibold text-lg tracking-wide"
+          >
+            <img
+              src="/cartify.svg"
+              alt="Cartify logo"
+              className="h-8 w-8"
+            />
+            <span>
+              Cartify<span className="opacity-70">.</span>
+            </span>
           </Link>
 
-          {/* SEARCH (DESKTOP) */}
+          {/* Search (Desktop) */}
           <div className="hidden md:block flex-1 mx-10">
             <div className="relative">
-              <FiSearch className="absolute left-3 top-2.5 text-slate-400" />
+              <FiSearch className="absolute left-3 top-2.5 text-[var(--brand-muted-2)]" />
               <input
                 value={search}
                 onChange={(e) => handleChange(e.target.value)}
-                placeholder="Search for products"
+                placeholder="Search products"
                 className="
                   w-full pl-9 pr-4 py-2
-                  bg-slate-800
-                  border border-slate-700
-                  rounded-md
-                  text-sm text-white
-                  placeholder-slate-400
-                  focus:outline-none focus:border-slate-500
+                  rounded-md text-sm
+                  bg-black/30
+                  border border-[var(--brand-border)]
+                  text-[var(--brand-foreground)]
+                  placeholder-[var(--brand-muted-2)]
+                  focus:outline-none focus:border-white/30
                 "
               />
             </div>
           </div>
 
-          {/* Actions */}
+          {/* Actions (Desktop) */}
           <div className="hidden md:flex items-center gap-6 text-sm">
-            <Link to="/" className="text-slate-300 hover:text-white">
+            <Link className="opacity-80 hover:opacity-100" to="/">
               Explore
             </Link>
 
             <Link
               to="/login"
-              className="text-slate-300 hover:text-white flex items-center gap-1"
+              className="flex items-center gap-1 opacity-80 hover:opacity-100"
             >
-              <FiUser /> Login
+              <FiUser />
+              Login
             </Link>
 
-            <Link to="/cart" className="relative text-slate-300 hover:text-white">
+            <Link to="/cart" className="relative opacity-80 hover:opacity-100">
               <FiShoppingCart size={20} />
               {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-slate-100 text-slate-900 text-xs px-1.5 rounded-full">
+                <span
+                  className="
+                    absolute -top-2 -right-2
+                    text-xs font-medium
+                    px-1.5 py-0.5 rounded-full
+                    bg-white
+                    text-[var(--brand-primary-dark)]
+                  "
+                >
                   {cartCount}
                 </span>
               )}
             </Link>
           </div>
 
-          {/* Mobile menu */}
+          {/* Mobile menu toggle */}
           <button
-            className="md:hidden text-slate-300"
+            className="md:hidden opacity-80 hover:opacity-100"
             onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
           >
             {open ? <FiX size={22} /> : <FiMenu size={22} />}
           </button>
         </div>
 
-        {/* MOBILE SEARCH */}
+        {/* Mobile menu */}
         {open && (
-          <div className="md:hidden border-t border-slate-800 py-4 space-y-3">
+          <div className="md:hidden border-t border-[var(--brand-border)] py-4 space-y-3">
             <input
               value={search}
               onChange={(e) => handleChange(e.target.value)}
               placeholder="Search products"
-              className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-md text-sm text-white"
+              className="
+                w-full px-4 py-2 rounded-md text-sm
+                bg-black/30
+                border border-[var(--brand-border)]
+                text-[var(--brand-foreground)]
+                placeholder-[var(--brand-muted-2)]
+                focus:outline-none
+              "
             />
 
-            <Link to="/" onClick={() => setOpen(false)} className="block text-slate-300">
+            <Link
+              to="/"
+              onClick={() => setOpen(false)}
+              className="block opacity-80 hover:opacity-100"
+            >
               Explore
             </Link>
 
-            <Link to="/login" onClick={() => setOpen(false)} className="block text-slate-300">
+            <Link
+              to="/login"
+              onClick={() => setOpen(false)}
+              className="block opacity-80 hover:opacity-100"
+            >
               Login
             </Link>
 
-            <Link to="/cart" onClick={() => setOpen(false)} className="block text-slate-300">
+            <Link
+              to="/cart"
+              onClick={() => setOpen(false)}
+              className="block opacity-80 hover:opacity-100"
+            >
               Cart ({cartCount})
             </Link>
           </div>

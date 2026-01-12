@@ -54,22 +54,22 @@ export default function Cart({ cart, updateQuantity, removeFromCart, setCart }) 
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 py-10 px-4">
+    <div className="min-h-screen bg-[var(--brand-bg)] py-10 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-semibold text-white flex items-center gap-2">
-            <FiShoppingCart className="text-slate-300" size={26} />
+          <h1 className="text-3xl font-semibold text-[var(--brand-text)] flex items-center gap-2">
+            <FiShoppingCart size={26} />
             Shopping Cart
           </h1>
-          <p className="text-slate-400 text-sm mt-1">
+          <p className="text-[var(--brand-muted)] text-sm mt-1">
             {cart.length} item{cart.length !== 1 && "s"}
           </p>
         </div>
 
         {/* Success */}
         {orderPlaced && (
-          <div className="mb-6 rounded-lg border border-emerald-400/30 bg-emerald-500/10 p-4 flex items-center gap-2 text-emerald-300">
+          <div className="mb-6 card-brand p-4 flex items-center gap-2 text-[var(--brand-primary)]">
             <MdCheckCircle size={20} />
             Order placed successfully. Redirecting…
           </div>
@@ -77,17 +77,17 @@ export default function Cart({ cart, updateQuantity, removeFromCart, setCart }) 
 
         {/* Empty Cart */}
         {cart.length === 0 ? (
-          <div className="bg-slate-800 border border-slate-700 rounded-lg p-16 text-center">
+          <div className="card-brand p-16 text-center">
             <div className="text-5xl mb-5">🛍️</div>
-            <h2 className="text-2xl font-semibold text-white mb-2">
+            <h2 className="text-2xl font-semibold text-[var(--brand-text)] mb-2">
               Your cart is empty
             </h2>
-            <p className="text-slate-400 mb-6">
+            <p className="text-[var(--brand-muted)] mb-6">
               Add items to continue shopping
             </p>
             <button
               onClick={() => navigate("/")}
-              className="inline-flex items-center gap-2 bg-slate-100 text-slate-900 font-medium py-3 px-6 rounded-md hover:bg-white transition"
+              className="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-md"
             >
               Continue Shopping
               <FiArrowRight />
@@ -100,11 +100,11 @@ export default function Cart({ cart, updateQuantity, removeFromCart, setCart }) 
               {cart.map((item) => (
                 <div
                   key={item.product._id}
-                  className="bg-slate-800 border border-slate-700 rounded-lg p-5 hover:border-slate-600 transition"
+                  className="card-brand p-5 transition hover:shadow-md"
                 >
                   <div className="flex gap-5">
                     {/* Image */}
-                    <div className="w-24 h-24 rounded-md overflow-hidden border border-slate-600">
+                    <div className="w-24 h-24 rounded-md overflow-hidden border border-[var(--brand-border)]">
                       <img
                         src={item.product.image}
                         alt={item.product.name}
@@ -118,24 +118,26 @@ export default function Cart({ cart, updateQuantity, removeFromCart, setCart }) 
 
                     {/* Details */}
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-white">
+                      <h3 className="text-lg font-semibold text-[var(--brand-text)]">
                         {item.product.name}
                       </h3>
-                      <p className="text-sm text-slate-400 mb-4">
+                      <p className="text-sm text-[var(--brand-muted)] mb-4">
                         Stock: {item.product.stock}
                       </p>
 
                       <div className="flex flex-wrap items-center justify-between gap-6">
                         {/* Price */}
                         <div>
-                          <p className="text-xs text-slate-400">Price</p>
-                          <p className="text-lg font-semibold text-emerald-400">
+                          <p className="text-xs text-[var(--brand-muted)]">
+                            Price
+                          </p>
+                          <p className="text-lg font-semibold text-[var(--brand-primary)]">
                             ₹{item.product.price}
                           </p>
                         </div>
 
                         {/* Quantity */}
-                        <div className="flex items-center border border-slate-600 rounded-md bg-slate-700">
+                        <div className="flex items-center border border-[var(--brand-border)] rounded-md bg-white">
                           <button
                             onClick={() =>
                               item.quantity > 1 &&
@@ -144,11 +146,11 @@ export default function Cart({ cart, updateQuantity, removeFromCart, setCart }) 
                                 item.quantity - 1
                               )
                             }
-                            className="px-3 py-1 text-slate-300 hover:bg-slate-600"
+                            className="px-3 py-1 hover:bg-gray-50"
                           >
                             <FiMinus />
                           </button>
-                          <span className="px-4 text-sm font-medium text-white">
+                          <span className="px-4 text-sm font-medium">
                             {item.quantity}
                           </span>
                           <button
@@ -159,7 +161,7 @@ export default function Cart({ cart, updateQuantity, removeFromCart, setCart }) 
                               )
                             }
                             disabled={item.quantity >= item.product.stock}
-                            className="px-3 py-1 text-slate-300 hover:bg-slate-600 disabled:opacity-50"
+                            className="px-3 py-1 hover:bg-gray-50 disabled:opacity-50"
                           >
                             <FiPlus />
                           </button>
@@ -167,8 +169,10 @@ export default function Cart({ cart, updateQuantity, removeFromCart, setCart }) 
 
                         {/* Total */}
                         <div className="text-right">
-                          <p className="text-xs text-slate-400">Total</p>
-                          <p className="text-lg font-semibold text-white">
+                          <p className="text-xs text-[var(--brand-muted)]">
+                            Total
+                          </p>
+                          <p className="text-lg font-semibold text-[var(--brand-text)]">
                             ₹{item.product.price * item.quantity}
                           </p>
                         </div>
@@ -178,7 +182,12 @@ export default function Cart({ cart, updateQuantity, removeFromCart, setCart }) 
                     {/* Remove */}
                     <button
                       onClick={() => removeFromCart(item.product._id)}
-                      className="p-2 rounded-md text-red-400 hover:bg-red-500/10 transition"
+                      className="
+                        p-2 rounded-md
+                        text-[var(--brand-danger)]
+                        hover:bg-[rgba(198,40,40,0.08)]
+                        transition
+                      "
                       title="Remove"
                     >
                       <FiTrash2 />
@@ -189,7 +198,7 @@ export default function Cart({ cart, updateQuantity, removeFromCart, setCart }) 
 
               <button
                 onClick={handleClearCart}
-                className="flex items-center gap-2 text-sm text-red-400 hover:text-red-300"
+                className="flex items-center gap-2 text-sm text-[var(--brand-danger)] hover:opacity-80"
               >
                 <FiTrash2 /> Clear cart
               </button>
@@ -197,31 +206,37 @@ export default function Cart({ cart, updateQuantity, removeFromCart, setCart }) 
 
             {/* Order Summary */}
             <div className="lg:col-span-1">
-              <div className="bg-slate-800 border border-slate-700 rounded-lg p-6 sticky top-20">
-                <h2 className="text-xl font-semibold text-white mb-5">
+              <div className="card-brand p-6 sticky top-20">
+                <h2 className="text-xl font-semibold text-[var(--brand-text)] mb-5">
                   Order Summary
                 </h2>
 
-                <div className="space-y-3 border-b border-slate-700 pb-5 mb-5 text-sm">
-                  <div className="flex justify-between text-slate-400">
+                <div className="space-y-3 border-b border-[var(--brand-border)] pb-5 mb-5 text-sm">
+                  <div className="flex justify-between text-[var(--brand-muted)]">
                     <span>Subtotal</span>
-                    <span className="text-white font-medium">₹{total}</span>
+                    <span className="font-medium text-[var(--brand-text)]">
+                      ₹{total}
+                    </span>
                   </div>
-                  <div className="flex justify-between text-slate-400">
+                  <div className="flex justify-between text-[var(--brand-muted)]">
                     <span>Discount</span>
-                    <span className="text-emerald-400 font-medium">
+                    <span className="font-medium text-[var(--brand-primary)]">
                       -₹{discount}
                     </span>
                   </div>
-                  <div className="flex justify-between text-slate-400">
+                  <div className="flex justify-between text-[var(--brand-muted)]">
                     <span>Shipping</span>
-                    <span className="text-emerald-400 font-medium">FREE</span>
+                    <span className="font-medium text-[var(--brand-primary)]">
+                      FREE
+                    </span>
                   </div>
                 </div>
 
                 <div className="flex justify-between items-center mb-6">
-                  <span className="font-medium text-white">Total</span>
-                  <span className="text-2xl font-semibold text-white">
+                  <span className="font-medium text-[var(--brand-text)]">
+                    Total
+                  </span>
+                  <span className="text-2xl font-semibold text-[var(--brand-text)]">
                     ₹{finalTotal}
                   </span>
                 </div>
@@ -229,28 +244,38 @@ export default function Cart({ cart, updateQuantity, removeFromCart, setCart }) 
                 <button
                   onClick={placeOrder}
                   disabled={isProcessing}
-                  className="w-full bg-slate-100 text-slate-900 font-medium py-3 rounded-md hover:bg-white transition disabled:opacity-50"
+                  className="w-full btn-primary py-3 rounded-md disabled:opacity-50"
                 >
                   {isProcessing ? "Processing…" : "Place Order"}
                 </button>
 
                 <button
                   onClick={() => navigate("/")}
-                  className="w-full mt-3 border border-slate-600 text-slate-300 py-3 rounded-md hover:bg-slate-700 transition flex items-center justify-center gap-2"
+                  className="
+                    w-full mt-3
+                    border border-[var(--brand-border)]
+                    py-3 rounded-md
+                    hover:bg-gray-50
+                    transition
+                    flex items-center justify-center gap-2
+                  "
                 >
                   <FiArrowRight className="rotate-180" />
                   Continue Shopping
                 </button>
 
-                <div className="mt-6 space-y-2 text-sm text-slate-400">
+                <div className="mt-6 space-y-2 text-sm text-[var(--brand-muted)]">
                   <div className="flex items-center gap-2">
-                    <FiCheck className="text-emerald-400" /> Secure payment
+                    <FiCheck className="text-[var(--brand-primary)]" /> Secure
+                    payment
                   </div>
                   <div className="flex items-center gap-2">
-                    <FiCheck className="text-emerald-400" /> Easy returns
+                    <FiCheck className="text-[var(--brand-primary)]" /> Easy
+                    returns
                   </div>
                   <div className="flex items-center gap-2">
-                    <FiCheck className="text-emerald-400" /> COD available
+                    <FiCheck className="text-[var(--brand-primary)]" /> COD
+                    available
                   </div>
                 </div>
               </div>

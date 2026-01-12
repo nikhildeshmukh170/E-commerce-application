@@ -206,6 +206,17 @@ const orderVolumeData = orders.slice(-7).map((o, i) => ({
 
         {/* ================= ORDERS ================= */}
         {activeTab === "orders" && (
+  orders.length === 0 ? (
+    <div className="bg-slate-800 border border-slate-700 rounded-xl p-10 text-center">
+      <p className="text-4xl mb-4">📦</p>
+      <h3 className="text-lg font-semibold text-white">
+        No orders yet
+      </h3>
+      <p className="text-slate-400 text-sm mt-2">
+        Orders placed by customers will appear here.
+      </p>
+    </div>
+  ) : (
           <div className="space-y-4">
             {orders.map((order) => {
               const isOpen = expandedOrderId === order._id;
@@ -284,10 +295,22 @@ const orderVolumeData = orders.slice(-7).map((o, i) => ({
               );
             })}
           </div>
+  )
         )}
 
         {/* ===== PRODUCTS ===== */}
         {activeTab === "products" && (
+  products.length === 0 ? (
+    <div className="bg-slate-800 border border-slate-700 rounded-xl p-10 text-center">
+      <p className="text-4xl mb-4">🛒</p>
+      <h3 className="text-lg font-semibold text-white">
+        No products available
+      </h3>
+      <p className="text-slate-400 text-sm mt-2">
+        Add products to start selling in your store.
+      </p>
+    </div>
+  ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {products.map((p) => (
               <div
@@ -315,6 +338,7 @@ const orderVolumeData = orders.slice(-7).map((o, i) => ({
               </div>
             ))}
           </div>
+  )
         )}
 
         {/* ===== ADD PRODUCT ===== */}

@@ -1,0 +1,95 @@
+:root {
+  --brand-primary: #00897B;
+  --brand-primary-dark: #00695C;
+  --brand-danger: #C62828;
+  --brand-warning: #FBC02D;
+
+  --brand-bg: #f9fafb;
+  --brand-surface: #ffffff;
+  --brand-text: #1f2933;
+  --brand-muted: #6b7280;
+  --brand-border: rgba(0,0,0,0.06);
+  
+}
+
+/* Header */
+.brand-header {
+  background: var(--brand-primary-dark);
+  color: #ffffff;
+}
+.brand-header[data-scrolled="true"] {
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--brand-primary);
+  color: #ffffff;
+}
+.btn-primary:hover {
+  background: var(--brand-primary-dark);
+}
+
+.btn-danger {
+  background: var(--brand-danger);
+  color: #ffffff;
+}
+
+/* Cards */
+.card-brand {
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+/* ===== Skeleton Base ===== */
+.skeleton,
+.skeleton-line,
+.skeleton-circle,
+.skeleton-button,
+.skeleton-row {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Shimmer animation */
+.skeleton::after,
+.skeleton-line::after,
+.skeleton-circle::after,
+.skeleton-button::after,
+.skeleton-row::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  animation: skeleton-shimmer 1.4s infinite;
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Shapes */
+.skeleton-line {
+  border-radius: 6px;
+}
+
+.skeleton-circle {
+  border-radius: 9999px;
+}
+
+.skeleton-button {
+  height: 42px;
+  border-radius: 8px;
+}
