@@ -12,7 +12,7 @@ This repository is a concise, reviewer-focused full‑stack e‑commerce assignm
 
 - **What I built:** a small full‑stack e‑commerce application called *Cartify* that supports product discovery, product detail pages, a client-side cart, a simulated checkout that creates orders in the backend, and a simple admin dashboard for viewing orders and managing products.
 - **How it works:** the React frontend requests data from the Express API (`/api/products`, `/api/orders`); the backend uses Mongoose to persist `Product` and `Order` documents in MongoDB. Checkout is simulated — the frontend posts cart items to `POST /api/orders`, which stores an `Order` document.
-- **Tech stack used:** React + Vite, Tailwind CSS, Node.js, Express, MongoDB (Mongoose), Axios. Dev tools: Vite, nodemon.
+- **Tech stack used:** React + Vite, Tailwind CSS, Node.js, Express, MongoDB (Mongoose), Axios, Recharts, React Toastify. Dev tools: Vite, nodemon.
 - **Assumptions made:** payment is simulated (no payment gateway), no authentication/authorization (admin pages are not protected), initial product data is seeded or added through the admin UI, and the environment provides a reachable MongoDB URI.
 ## Author info:
   - Name: Deshmukh Nikhil Dipak
