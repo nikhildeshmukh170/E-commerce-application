@@ -21,16 +21,6 @@ This repository is a concise, reviewer-focused full‑stack e‑commerce assignm
   - University / Organization: Bennett University
   - Role: Full Stack Developer Intern
 
-
-**How this README is organized**
-
-- **Quick setup**: run the app locally (frontend + backend)
-- **Architecture & User flow**: clear Mermaid diagrams
-- **Security**: immediate remediation for committed secrets
-- **API & Data models**: routes and model summaries
-- **Screenshots & Presentation**: placeholders, storage, and tips
-- **Reviewer checklist**: concrete items for grading
-
 ---
 
 **Quick setup — Development**
