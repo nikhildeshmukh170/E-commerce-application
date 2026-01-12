@@ -1,6 +1,8 @@
-# Cartify — E‑commerce Assignment
+# Cartify. — E‑commerce Assignment
 
-Live demo (local): [Main site](http://localhost:5173) · [Admin dashboard](http://localhost:5173/admin)
+Live demo: 
+- [Main site](https://cartify-e-commerce-application.vercel.app/) 
+- [Admin dashboard](https://cartify-e-commerce-application.vercel.app/admin)
 
 This repository is a concise, reviewer-focused full‑stack e‑commerce assignment demonstrating a maintainable product → cart → checkout → order flow. It uses a Vite + React frontend and an Express + Mongoose backend with MongoDB.
 
@@ -45,23 +47,27 @@ Open the Vite dev URL printed by the frontend (commonly `http://localhost:5173`)
 ```mermaid
 flowchart TD
   U[User / Browser]
+
   subgraph Frontend
     V[Vite Dev Server]
-    R[React App (pages & components)]
+    R["React App - pages and components"]
   end
+
   subgraph Backend
     B[Express API]
-    C[Controllers & Routes]
+    C["Controllers and Routes"]
     M[Mongoose Models]
   end
+
   DB[(MongoDB)]
 
   U --> R
-  R -->|REST /api| B
+  R -->|REST API| B
   B --> C
   C --> M
   M --> DB
-  R -->|assets| V
+  R -->|Assets| V
+
 ```
 
 ---
@@ -69,34 +75,17 @@ flowchart TD
 ## User flow (diagram)
 
 ```mermaid
-flowchart LR
+flowchart TD
   PL[Product Listing] --> PD[Product Detail]
   PD -->|Add to cart| C[Cart]
-  C -->|Proceed to checkout| CO[Checkout (simulated)]
-  CO -->|Place Order| OS[Order Success]
-  OS -->|POST /api/orders| B[Backend]
+  C -->|Proceed to checkout| CO["Checkout - simulated"]
+  CO -->|Place order| OS[Order Success]
+  OS -->|Create order API| B[Backend]
   B --> DB[(MongoDB)]
   DB --> ADM[Admin Dashboard]
-  ADM -->|update status| B
+  ADM -->|Update order status| B
+
 ```
-
----
-
-## Security — immediate remediation required
-
-This repository currently contains `backend/.env` with `MONGO_URI`. Treat it as leaked and remove it from the repo now.
-
-Commands (keep local copy):
-
-```bash
-git rm --cached backend/.env
-git commit -m "chore(secrets): remove backend .env from repo"
-echo "backend/.env" >> .gitignore
-git add .gitignore
-git commit -m "chore: ignore backend .env"
-```
-
-Rotate the MongoDB credentials in your provider immediately. If the repo was pushed to a remote, purge the secret from history (use `git filter-repo` or BFG), then force-push and inform stakeholders.
 
 ---
 
@@ -122,25 +111,37 @@ See controller files for request/response shapes: [backend/src/controllers/produ
 
 ## Screenshots & Presentation (placeholders)
 
-Create a folder `frontend/public/screenshots/` and add these image files (example names):
+# Home Page
+<img width="1902" height="928" alt="image" src="https://github.com/user-attachments/assets/ca2e5a1e-30f3-4601-a210-b8480f8b58b6" />
+<img width="1869" height="932" alt="image" src="https://github.com/user-attachments/assets/99657cae-a2a1-477a-af09-b4f4fcb23733" />
 
-- `home.png` — Home / product listing
-- `product.png` — Product detail
-- `cart.png` — Cart page
-- `checkout.png` — Order success
-- `admin.png` — Admin orders list
+##
 
-Embed example in this README or other markdown files:
+# Product Details
+<img width="1900" height="930" alt="image" src="https://github.com/user-attachments/assets/df18d652-6c14-439a-8601-d5bb904e3f48" />
 
-```markdown
-![Home page](/screenshots/home.png)
-```
+##
 
-Tips:
+# Cart
+<img width="1901" height="928" alt="image" src="https://github.com/user-attachments/assets/ed126966-897f-4f18-a330-f6396c12ce29" />
 
-- Use PNG at ~1200px width for clear UI capture.
-- Add a one-line caption and reproduction steps under each image.
-- If you have a hosted demo, show the URL next to each screenshot.
+# Place Order
+<img width="1901" height="928" alt="image" src="https://github.com/user-attachments/assets/464eb627-b879-4ac0-ac90-802d90c32bf8" />
+
+##
+
+# Admin Dashboard
+<img width="1899" height="926" alt="image" src="https://github.com/user-attachments/assets/39f0f005-3236-4d18-b688-2dbda89bb974" />
+
+- Orders
+<img width="1898" height="928" alt="image" src="https://github.com/user-attachments/assets/59b784d2-2030-4e54-a21a-4f1f6612c560" />
+
+- Products
+<img width="1893" height="907" alt="image" src="https://github.com/user-attachments/assets/ca58fcdd-cda4-4261-883e-dfd91f70b905" />
+<img width="1900" height="927" alt="image" src="https://github.com/user-attachments/assets/24393bde-7b32-46eb-af7f-6459f1f050b8" />
+
+- Add Products
+<img width="1918" height="932" alt="image" src="https://github.com/user-attachments/assets/bc4fbdae-e9fb-4724-b7c7-3590a68dc115" />
 
 ---
 
