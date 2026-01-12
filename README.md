@@ -14,10 +14,10 @@ This repository is a concise, reviewer-focused full‑stack e‑commerce assignm
 - **How it works:** the React frontend requests data from the Express API (`/api/products`, `/api/orders`); the backend uses Mongoose to persist `Product` and `Order` documents in MongoDB. Checkout is simulated — the frontend posts cart items to `POST /api/orders`, which stores an `Order` document.
 - **Tech stack used:** React + Vite, Tailwind CSS, Node.js, Express, MongoDB (Mongoose), Axios. Dev tools: Vite, nodemon.
 - **Assumptions made:** payment is simulated (no payment gateway), no authentication/authorization (admin pages are not protected), initial product data is seeded or added through the admin UI, and the environment provides a reachable MongoDB URI.
-- **Submission / Author info:**
+## Author info:
   - Name: Deshmukh Nikhil Dipak
   - Enrollment / ID: E22CSEU1099
-  - Batch: B37
+  - Batch: 2026
   - University / Organization: Bennett University
   - Role: Full Stack Developer Intern
 
