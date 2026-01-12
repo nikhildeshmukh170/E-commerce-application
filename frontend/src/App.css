@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Loading skeleton styles */
+.skeleton {
+  background: linear-gradient(90deg, #1f2937 25%, #374151 50%, #1f2937 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+
+.skeleton-line { border-radius: 6px; }
+.skeleton-circle { border-radius: 50%; }
+.skeleton-button { height: 44px; border-radius: 10px; background: linear-gradient(90deg, #334155 25%, #475569 50%, #334155 75%); background-size:200% 100%; animation: shimmer 1.2s linear infinite; }
+.skeleton-row { height: 56px; }
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
